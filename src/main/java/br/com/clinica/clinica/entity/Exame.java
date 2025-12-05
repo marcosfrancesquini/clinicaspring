@@ -23,10 +23,4 @@ public class Exame {
     @Column(nullable = false, length = 80)
     private String nomeExame;
 
-    @Column(nullable = true, length = 255)
-    private String resultado;
-
-    @Column(nullable = false)
-    private LocalDate dataExame;
-
 }

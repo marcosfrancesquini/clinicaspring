@@ -32,8 +32,6 @@
                 <tr>
                     <th>#</th>
                     <th>Nome do Exame</th>
-                    <th>Data</th>
-                    <th>Resultado</th>
                     <th class="text-center">Ações</th>
                 </tr>
             </thead>
@@ -42,8 +40,6 @@
                 <tr th:each="exame : ${exames}">
                     <td th:text="${exame.id}"></td>
                     <td th:text="${exame.nomeExame}"></td>
-                    <td th:text="${#dates.format(exame.dataExame, 'dd/MM/yyyy')}"></td>
-                    <td th:text="${exame.resultado}"></td>
                     <td class="text-center">
                         <a th:href="@{/exames/editar/{id}(id=${exame.id})}" class="btn btn-primary btn-sm">
                             <i class="bi bi-pencil-square"></i> Editar

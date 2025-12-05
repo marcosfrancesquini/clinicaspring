@@ -35,16 +35,6 @@
               <input type="text" class="form-control" th:field="*{nomeExame}" required>
             </div>
 
-            <div class="mb-3">
-              <label class="form-label">Data do Exame</label>
-              <input type="date" class="form-control" th:field="*{dataExame}" required>
-            </div>
-
-            <div class="mb-4">
-              <label class="form-label">Resultado</label>
-              <textarea class="form-control" rows="3" th:field="*{resultado}"></textarea>
-            </div>
-
             <div class="d-flex justify-content-between">
               <a th:href="@{/exames/listar}" class="btn btn-secondary">
                 <i class="bi bi-arrow-left"></i> Voltar

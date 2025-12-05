@@ -33,7 +33,7 @@ public class AgendaService {
                 .map(c -> new ConsultaMedicoDTO(
                         c.getId(),
                         c.getDataConsulta(),
-                        c.getPaciente(),
+                        c.getPaciente().getNome(),
                         c.getObservacoes()
                 ))
                 .collect(Collectors.toList());

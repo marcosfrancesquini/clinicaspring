@@ -48,7 +48,7 @@
             <tr th:each="consulta : ${consultas}">
               <td th:text="${consulta.id}"></td>
               <td th:text="${#dates.format(consulta.dataConsulta, 'dd/MM/yyyy')}"></td>
-              <td th:text="${consulta.paciente}"></td>
+              <td th:text="${consulta.paciente.nome}"></td>
               <td th:text="${consulta.observacoes}"></td>
               <td th:text="${consulta.medico.nome}"></td>
 

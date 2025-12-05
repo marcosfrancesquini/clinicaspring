@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.clinica.clinica.entity.Consulta;
 import br.com.clinica.clinica.service.ConsultaService;
 import br.com.clinica.clinica.service.MedicoService;
+import br.com.clinica.clinica.service.PacienteService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,11 +26,15 @@ public class ConsultaController {
     @Autowired
     private MedicoService medicoService;
 
+    @Autowired
+    private PacienteService pacienteService;
+
     //Método para abrir o formulário de criação de consultas
     @GetMapping("/criar") // /consulta/criar
     public String criarForm(Model model) {
         model.addAttribute("consulta", new Consulta()); // objeto vazio
         model.addAttribute("medicos", medicoService.findAll()); // lista para o <select>
+        model.addAttribute("pacientes", pacienteService.findAll());
         return "consulta/formularioConsulta";
     }
 
@@ -61,6 +66,7 @@ public class ConsultaController {
         Consulta consulta = consultaService.findById(id);
         model.addAttribute("consulta", consulta);
         model.addAttribute("medicos", medicoService.findAll()); // repassa a lista no modo edição
+        model.addAttribute("pacientes", pacienteService.findAll());
         return "consulta/formularioConsulta";
     }
 }

@@ -21,8 +21,9 @@ public class Consulta {
     @Column(nullable = false)
     private Date dataConsulta;
 
-    @Column(nullable = false, length = 60)
-    private String paciente;
+    @ManyToOne
+    @JoinColumn(name = "paciente_id", nullable = false)
+    private Paciente paciente;
 
     @Column(length = 255)
     private String observacoes;
