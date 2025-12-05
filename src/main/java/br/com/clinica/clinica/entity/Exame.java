@@ -22,5 +22,9 @@ public class Exame {
 
     @Column(nullable = false, length = 80)
     private String nomeExame;
+    
+    @ManyToMany(mappedBy = "exames")
+    private java.util.List<Paciente> pacientes = new java.util.ArrayList<>();
+
 
 }

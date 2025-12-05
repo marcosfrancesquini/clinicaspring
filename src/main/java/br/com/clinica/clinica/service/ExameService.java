@@ -28,4 +28,9 @@ public class ExameService {
     public Exame findById(Integer id) {
         return exameRepository.findById(id).orElse(null);
     }
+
+    public List<Exame> findAllById(List<Integer> ids) {
+        return exameRepository.findAllById(ids);
+    }
+
 }

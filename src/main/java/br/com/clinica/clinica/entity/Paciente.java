@@ -1,10 +1,10 @@
 package br.com.clinica.clinica.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -21,13 +21,21 @@ public class Paciente {
     @Column(nullable = false, length = 80)
     private String nome;
 
-    @Column(nullable = false, length = 14)
+    @Column(nullable = false, length = 14, unique = true)
     private String cpf;
 
-    @Column(nullable = false, length = 15)
+    @Column(length = 15)
     private String telefone;
 
-    @Column(nullable = false, length = 80)
+    @Column(length = 80)
     private String email;
-    
+
+    @ManyToMany
+    @JoinTable(
+        name = "paciente_exame", // nome da tabela intermediária
+        joinColumns = @JoinColumn(name = "paciente_id"),   // FK para Paciente
+        inverseJoinColumns = @JoinColumn(name = "exame_id") // FK para Exame
+    )
+    private List<Exame> exames = new ArrayList<>();
 }
+

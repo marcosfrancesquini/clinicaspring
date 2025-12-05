@@ -44,6 +44,11 @@
                         <a th:href="@{/exames/editar/{id}(id=${exame.id})}" class="btn btn-primary btn-sm">
                             <i class="bi bi-pencil-square"></i> Editar
                         </a>
+
+                        <a th:href="@{/exames/{id}/pacientes(id=${exame.id})}" class="btn btn-info btn-sm me-1">
+                            <i class="bi bi-people"></i> Pacientes
+                        </a>
+
                         <a th:href="@{/exames/excluir/{id}(id=${exame.id})}" class="btn btn-danger btn-sm">
                             <i class="bi bi-trash3"></i> Excluir
                         </a>

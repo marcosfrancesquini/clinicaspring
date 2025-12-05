@@ -1,6 +1,7 @@
 package br.com.clinica.clinica.controller;
 
 import br.com.clinica.clinica.entity.Exame;
+import br.com.clinica.clinica.entity.Paciente;
 import br.com.clinica.clinica.service.ExameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,4 +49,23 @@ public class ExameController {
         model.addAttribute("exame", exame);
         return "exame/formularioExame";
     }
+
+    // ---------- NOVO: listar pacientes vinculados a um exame ----------
+
+    @GetMapping("/{id}/pacientes")
+    public String listarPacientesDoExame(@PathVariable Integer id, Model model) {
+
+        Exame exame = exameService.findById(id);
+        if (exame == null) {
+            return "redirect:/exames/listar";
+        }
+
+        List<Paciente> pacientes = exame.getPacientes(); // ManyToMany
+
+        model.addAttribute("exame", exame);
+        model.addAttribute("pacientes", pacientes);
+
+        return "exame/pacientesExame"; // templates/exame/pacientesExame.html
+    }
 }
+    
